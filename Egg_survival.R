@@ -37,3 +37,14 @@ eggplot <- tidy_egg %>%
 
 final_eggplot <- eggplot + scale_color_manual(values=c("#D55E00","#009E73","#000000"))
 print(final_eggplot)
+
+#stats tests
+
+
+tidy_egg %>% mutate(line = factor(line, levels = c("Benavi", "003.3", "004.2C"))) -> egg_tidier
+egg_number_model <- lm(number_of_eggs ~ line, data = egg_tidier)
+summary(egg_number_model)
+
+library(report)
+
+report(egg_number_model)
